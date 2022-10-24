@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 피연산자 : 연산자가 연산을 수행하는 대상, 인수(argument)라고 부르기도 함
+        
+        // ===============
+        // 단항연산자
+        // ===============
+        let x = 1;
+        x = -x;
+        alert(x);   // -1
+
+        // ===============
+        // 이항연산자
+        // ===============
+        let a = 1, b = 3;
+        alert(b-a); // 2
+
+        // ===============
+        // 나머지 연산자 %
+        // ===============
+        alert(5 % 2);   // 1
+        alert(8 % 3);   // 2
+
+        // ===============
+        // 거듭제곱 연산자 **
+        // ===============
+        alert(2 ** 2);  //4 
+        alert(2 ** 3);  // 8
+        alert(2 ** 4);  // 16
+        // 피연산자가 정수가 아닐때
+        alert(4 ** (1/2));  // 2
+        alert(8 ** (1/3));  // 2
+
+        // ===============
+        // 이항연산자 + 와 문자열 연결
+        // ===============
+        let s = "my" + "string";
+        alert(s); // mystring
+
+        // + 의 피연산자로 문자열이 오면 모두 문자열로 치환
+        alert( '1' + 2 ); // "12"
+        alert( 2 + '1' ); // "21"
+
+        alert( 6 - '2' ); // 4, '2'를 숫자로 바꾼 후 연산이 진행됩니다.
+        alert( '6' / '2' ); // 3, 두 피연산자가 숫자로 바뀐 후 연산이 진행됩니다.
+
+        // ===============
+        // 단항연산자 + 와 숫자형으로의 변환
+        // ===============
+        // 숫자에는 아무런 영향을 미치지 않습니다.
+        let c = 1;
+        alert( +c ); // 1
+
+        let d = -2;
+        alert( +d ); // -2
+
+        // 숫자형이 아닌 피연산자는 숫자형으로 변화합니다.
+        alert( +true ); // 1
+        alert( +"" );   // 0
+
+        let apples = "2";
+        let oranges = "3";
+        alert( apples + oranges ); // 23, 이항 덧셈 연산자는 문자열을 연결합니다.
+
+        // 원하는 대로 값을 더해주려면?
+        let appless = "2";
+        let orangess = "3";
+
+        // 이항 덧셈 연산자가 적용되기 전에, 두 피연산자는 숫자형으로 변화합니다.
+        alert( +appless + +orangess ); // 5
+
+        // `Number(...)`를 사용해서 같은 동작을 하는 코드를 작성할 수 있지만, 더 기네요.
+        // alert( Number(apples) + Number(oranges) ); // 5
+    </script>
+
+</body>
+</html>

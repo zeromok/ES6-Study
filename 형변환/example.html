@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ==================
+        // 문자형으로 변환
+        // ==================
+        let value = true;
+        alert(typeof value); // boolean
+
+        value = String(value);  // 변수 value 안에 문자열 'true'가 저장
+        alert(typeof value);    // String        
+    </script>
+
+    <script>
+        // ==================
+        // 숫자형으로 변환
+        // ==================
+
+        // 1. 수학과 관련된 함수와 표현식에서 자동으로 일어나는 경우
+        alert('6'/'2'); // 문자열이 숫자형으로 자동변환된 후 연산이 수행    3
+
+        let str = '123';
+        alert(typeof str);  // String
+
+        // 2. 숫자형 값이 필요하지만 문자기반 form을 통해 입력 받은 경우
+        let num = Number(str);  // 문자열 str이 숫자형으로 바뀜
+        alert(str);
+
+        // 3. 숫자 이외의 글자가 들어가 있는 문자열을 변환하려고 하면? -> NaN
+        let age = Number('문자열 123');
+        alert(age);
+    </script>
+
+    <script>
+        // ==================
+        // boolean 형으로 변환
+        // ==================
+        alert(Boolean(1));  // 숫자 1(true)
+        alert(Boolean(0));  // 숫자 0(false)
+        alert(Boolean("Hello"));    // 문자열(true)
+        alert(Boolean(''));         // 빈문자열(false)
+
+        // ** 문자열 0은 true
+        alert(Boolean('0')); // true
+        alert(Boolean(' ')); // 공백이 있는 문자열(true)
+    </script>
+</body>
+</html>
+
