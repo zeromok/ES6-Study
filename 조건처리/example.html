@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ============================
+        // if문
+        // ============================
+
+        let year = prompt('지금은 몇년도?');
+        if(year == 2022){
+            alert('정답');
+        }
+
+        // ============================
+        // Boolean형으로 변환
+        // ============================
+        /*
+            falsy : Boolean형 으로 변환시, 모두 false가 되는 타입
+                  : 0, "", null, undefined, NaN
+            truthy :  Boolean형 으로 변환시, 모두 true 되는 타입
+        */
+       if(true/false){;;}
+
+       // ============================
+       // else 절 : 거짓일 때 실행
+       // ============================
+        year = prompt('지금은 몇년도?');
+        if(year == 2022){
+            alert('정답');
+        }else{
+            alert('오답');
+        }
+
+        // ============================
+        // else if 절
+        // ============================
+        year = prompt('지금은 몇년도?');
+        if(year == 2022){
+            alert('정답');
+        }else if(year > 2022){
+            alert('좀 더 내려보세요');
+        }else{
+            alert('오답');
+        }
+
+        // ============================
+        // 조건부연산자(?) : 조건에 따라 다른값을 변수에 할당
+        // ============================
+        let accessAllowed;
+        let age = prompt('나이를 입력해 주세요.', '');
+
+        /* if(age>18){
+            accessAllowed = true;
+        }else{
+            accessAllowed = false;
+        }
+        alert(accessAllowed); */
+
+        accessAllowed = (age>18) ? true : false; // 위 코드와 같다
+        alert(accessAllowed);
+
+        // ============================
+        // 다중 조건문연산자
+        // ============================
+        age = prompt('나이를 입력해 주세요.', 18);
+
+        let message = (age<3)? '아기' : (age<19) ? '학생' : (age<100) ? '성인' : '오답';
+        alert(message);
+
+    </script>
+</body>
+</html>
