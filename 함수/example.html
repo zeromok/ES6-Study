@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Java Script는 함수를 특별한 종류의 값으로 취급
+        // 다른 언어에서처럼 '특별한 동작을 하는 구조'로 취급되지 않는다.
+
+        // =======================
+        // 콜백함수
+        // =======================
+        function ask(question, yes, no){
+            if(confirm(question)){
+                yes();
+            }else{
+                no();
+            }
+        }
+
+        // function showOk(){
+        //     alert('동의');
+        // }
+
+        // function showCancel(){
+        //     alert('취소');
+        // }
+
+        // ask('동의?', showOk, showCancel);
+        
+        // 아래처럼 축약표현 가능 - 화살표 함수
+        ask('동의하세요??', ()=>{
+            alert('동의');
+        }, ()=>{
+            alert('취소');
+        });
+        // showOk, showCancel : 콜백함수, 콜백이라고 부른다.
+        // 함수를 함수의 인수로 전달
+
+        
+        // =======================
+        // 함수표현식 VS 함수선언문
+        // =======================
+        
+        function sum(a, b){
+            return a + b;
+        } // 함수선언문 : 주요 코드 흐름 중간에 독자적인 구문형태로 존재
+        //              : 함수선언문이 정의되기 전에도 호출할수 있다.
+        //              : WHY? 실행 전 전역에 선언된 선언문을 찾고 생성, 그래서 **스크립트 어디서든 접근 가능(블록 내부)
+
+        let sum = function(a, b){
+            return a + b;
+        }; // 함수표현식 : 표현식이나 구문 내부에 생성
+        //               : 실제 실행흐름이 해당 함수에 도달했을 때 함수생성 
+        //               : 표현식을 사용하면 블록 밖에서도 호출 가능
+
+    </script>
+</body>
+</html>
