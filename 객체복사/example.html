@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 변수에 객체가 저장될 때에는 객체에 대힌 '참조값'이 저장된다.
+
+        let user1 = {name : 'mokk'};
+        let admin = user1;
+        user1.name = 'Peter';   // Peter가 출력됨
+
+        // =======================
+        // 객체복사, 병합과 Object.assign
+        // =======================
+        /*
+            기존 객체와 똑같으면서, 독립적인 객체를 만들고 싶다면?
+            Js는 객체 복제 내장 메소드를 지원하지 않기 때문에 어렵다.
+            참조에 의한 복사 만으로도 거의 해결 가능
+            정말 필요하다면 새로운 객체를 만든 후 기존객체의 프로퍼티들을 순회하며 복사
+        */
+        // 방법 1.
+        let user2 = {
+        name: "John",
+        age: 30
+        };
+
+        let clone1 = {}; // 새로운 빈 객체
+
+        // 빈 객체에 user 프로퍼티 전부를 복사해 넣습니다.
+        for (let key in user2) {
+        clone1[key] = user2[key];
+        }
+
+        // 이제 clone은 완전히 독립적인 복제본이 되었습니다.
+        clone1.name = "Pete"; // clone의 데이터를 변경합니다.
+
+        alert( user2.name ); // 기존 객체에는 여전히 John이 있습니다.
+
+        // 방법 2.
+        // Object.assign(dest, [src1, src2, src3...])
+        /* 
+            dest : 목표로 하는 객체 (복사 할 객체)
+            src1 ~... : 복사하고자 하는 객체 (복사 당할 객체 또는 객체들)
+        */
+        // 2-1. assign 메소드를 사용해 여러객체를 하나로 병합하는 예
+        let user3 = { name: "John" };
+
+        let permissions1 = { canView: true };
+        let permissions2 = { canEdit: true };
+
+        // permissions1과 permissions2의 프로퍼티를 user로 복사합니다.
+        Object.assign(user3, permissions1, permissions2);
+
+        // now user = { name: "John", canView: true, canEdit: true }
+
+        // 2-2. 목표객체에 동일한 이름을 가진 프로퍼티가 있는 경우엔 기존 값이 덮어씌워짐
+        let user4 = { name: "John" };
+
+        Object.assign(user4, { name: "Pete" });
+
+        alert(user4.name); // user = { name: "Pete" }
+
+        // 2-3. 반복문 없이 객체복사하기
+        let user = {
+            name: "John",
+            age: 30
+        };
+
+        let clone = Object.assign({}, user);
+        clone.name = 'Peter';
+        console.log(`clone.name : ${clone.name}, user.name : ${user.name}`);  // Peter
+
+    </script>
+</body>
+</html>
