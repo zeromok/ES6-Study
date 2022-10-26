@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ==================================
+        // pop & push, shift & unshift
+        // ==================================
+        /*
+            pop - 배열 끝 요소를 제거하고, 제거한 요소를 반환
+            push - 배열 끝에 요소를 추가
+        */
+       /*
+            shift - 배열 앞 요소를 제거하고, 제거한 요소를 반환
+            unshift - 배열 앞에 요소를 추가
+       */
+
+        // ==================================
+        // splice()
+        // ==================================
+        // 배열에서 요소를 하나만 지우고 싶다면?
+        // arr.splice(index[, deleteCount, elem1, ..., elemN])
+        let arr = ["I", "study", "JavaScript"];
+
+        arr.splice(1, 1); // 인덱스 1부터 요소 한 개를 제거
+
+        alert( arr ); // ["I", "JavaScript"]
+
+        // ==================================
+        // slice()
+        // ==================================
+        // arr.slice([start], [end])
+        // start 부터 end 요소까지를 복사한 새로운 배열을 반환
+
+        // ==================================
+        // concat()
+        // ==================================
+
+    </script>
+</body>
+</html>
