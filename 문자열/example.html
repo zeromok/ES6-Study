@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ============================
+        // 특정 글자에 접근하기
+        // ============================
+        let str = 'Hello';
+        // 첫번째 글자
+        str[0]              // H
+        str.charAt(0);      // H
+
+        str[1000]           // undefined
+        str.charAt(1000);   // '' 빈 문자열
+
+        for(let char of str){
+            alert(char);        // 문자열을 구성하는 대상으로 반복작업 수행
+        }
+
+        // ============================
+        // 대소문자 변경
+        // ============================
+        'Interface'.toUpperCase();  // INTERFACE
+        'Interface'.toLowerCase();  // interface
+        'Interface'[0].toLowerCase();   // 글자 하나만 변경 -> interface
+
+        // ============================
+        // 부분 문자열 찾기
+        // ============================
+        /*
+            str.indexOf(substr, pos)
+            str의 pos에서부터 시작해, substr(부분문자열)이 어디에 위치하는지 찾아줌 
+        */
+
+        // ============================
+        // 부분 문자열 추출하기
+        // ============================
+        // str.slice(x, [y]); ***
+        // 문자열의 x부터 y까지 반환
+        // 음수허용 (뒤에서부터)
+
+        // str.substring(x, [y]);
+        // x와 y사이에 있는 문자열 반환
+        // slice와 유사하지만 x가 y보다 커도 OK
+        // 음수는 0으로 취급
+         
+        // str.substr(x, [length]);
+        // x부터 시작해 length개의 글자 반환
+        // 음수허용 (뒤에서부터)
+
+    </script>
+</body>
+</html>
