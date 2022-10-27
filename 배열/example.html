@@ -18,6 +18,8 @@
        /*
             shift - 배열 앞 요소를 제거하고, 제거한 요소를 반환
             unshift - 배열 앞에 요소를 추가
+
+            *** shift & unshift 는 pop & push 보다 느리다. 왜? 데이터들을 밀고 땡겨야해서...
        */
 
         // ==================================
@@ -25,11 +27,15 @@
         // ==================================
         // 배열에서 요소를 하나만 지우고 싶다면?
         // arr.splice(index[, deleteCount, elem1, ..., elemN])
+        // 옵션을 지정하지 않으면 지정한 인덱스부터 모든 데이터를 지워줌
         let arr = ["I", "study", "JavaScript"];
 
         arr.splice(1, 1); // 인덱스 1부터 요소 한 개를 제거
 
         alert( arr ); // ["I", "JavaScript"]
+
+        arr.splice(1, 1, 'Java', 'React')   // "JavaScript"를 지우고 뒤 요소들을 집어 넣어줌
+        arr.splice(1, 0, 'Java', 'React')   // 요소를 지우지 않고 요소들을 집어 넣어줌
 
         // ==================================
         // slice()
@@ -40,7 +46,32 @@
         // ==================================
         // concat()
         // ==================================
-        // 
+        const arr2 = ['Html', 'Css']
+        const newArr = arr.concat(arr2);
+        // 2개의 배열을 이어 새로운 배열 생성
+
+        // ==================================
+        // 배열의 마지막 인덱스 가져오기
+        // arr[arr.length -1]
+        // ==================================
+
+        // ==================================
+        // 배열의 순회
+        // ==================================
+        /*
+            1. for
+                for(let i=0; i<arr.length; i++){
+                    arr[i];
+                }
+
+            2. for of
+                for(let test of arr){
+                    test;
+                }
+            2. forEach
+                arr.forEach();
+                arr.forEach((arr, index) => { console.log(arr, index)});
+        */
 
     </script>
 </body>
