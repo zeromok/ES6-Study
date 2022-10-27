@@ -71,7 +71,7 @@
                     {id: 2, name: "Pete"},
                     {id: 3, name: "Mary"}
                 ];
-                let user = users.find(item => item.id == 1);
+                let user = users.find( (item) => {item.id == 1} );
                 alert(user.name); // John
 
             5. findIndex();
@@ -98,7 +98,7 @@
         // split & join
         // 입력받은 문자열을 어떨게 배열로 바꿀 수 있을까? <-> join
         // ==================================
-        
+
         // split
         let names = 'name1, name2, name3';
         let nameArr = names.split(','); // , 기준으로 문자열을 쪼개줌

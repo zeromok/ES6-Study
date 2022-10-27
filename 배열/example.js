@@ -69,25 +69,37 @@
   
   // Q7. make an array containing only the students' scores
   // result should be: [45, 80, 90, 66, 88]
+  // 학생 객체들중 score만으로 배열 생성
   {
     let result = students.map((student) => student.score );
     console.log('7.', result);
   }
   
   // Q8. check if there is a student with the score lower than 50
+  // score가 50보다 작은 객체 찾기
   {
+    let result = students.find( (student) => student.score < 50 );
+    console.log('8.', result);
   }
   
   // Q9. compute students' average score
+  // 모든 객체의 score값 평균 구하기
   {
+    let result = students.reduce( (pre, cur) => pre + cur.score , 0 );
+    let avg = result / students.length;
+    console.log('9.', avg);
   }
   
   // Q10. make a string containing all the scores
   // result should be: '45, 80, 90, 66, 88'
   {
+    let result = students.map( (student) => student.score ).join();
+    console.log('10.', result);
   }
   
   // Bonus! do Q10 sorted in ascending order
   // result should be: '45, 66, 80, 88, 90'
   {
+    let result = students.map( (student) => student.score ).sort().join();
+    console.log('11.', result);
   }
