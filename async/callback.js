@@ -10,36 +10,40 @@ console.log('3');
 function printImmediately(print) {
     print();
 }
-printImmediately( () => console.log('Hello') );
+printImmediately( () => console.log('Hello') ); // Hello
 
 // ======================
 // Asynchronous Callback - 언제실행될지 알 수 없는 : 비동기
 // ======================
 function printWithDelay(print, timeout) {
-    (print, timeout);
+    setTimeout(print, timeout);
 }
 printWithDelay( ()=> console.log('Async callback'), 2000);
 
 // =======================
 // 콜백지옥
 // =======================
+
+// 클래스 생성
 class UserStorage {
 
+    // 사용자 Login 
     loginUser(id, password, onSuccess, onError) {
         setTimeout( () => {
             if(
                 (id === 'ellie' && password === 'dream') ||
                 (id === 'coder' && password === 'academy')
             ) {
-                // 받아오는 값
+                // 리턴값
                 onSuccess(id)
             }else {
+                // 리턴값
                 onError(new Error('not found'));
             }
-        }, 2000);
+        }, 0);
     }// loginUser()
 
-    
+
     getRoles(user, onSuccess, onError){
         setTimeout( () => {
             if(user === 'ellie') {
@@ -48,14 +52,14 @@ class UserStorage {
             }else {
                 onError(new Error('no access'));
             }
-        }, 1000);
+        }, 0);
     }// getRoles()
 
 }// end class
 
 // ============================================================
 
-// 클래스 생성
+// 인스턴스 생성
 const userStorage = new UserStorage();
 
 // 인자 값 입력 받기
@@ -67,6 +71,7 @@ userStorage.loginUser(
     password,
     // onSuccess(id), 받아오는 값들
     (user) => {
+        // onSuccess
         // 성공했다면, 그 정보를 이용해 
         userStorage.getRoles(
                 user,
@@ -85,3 +90,5 @@ userStorage.loginUser(
     (error) => {console.log(error)
     } 
 );
+
+// 문제점 : 가독성이 떨어진다. , 디버깅 어려움
