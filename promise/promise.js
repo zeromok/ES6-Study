@@ -18,10 +18,12 @@ const promise = new Promise((resolve, reject) => {
 
     // doing some heavy work - Network, Read Files
     console.log('doing something...');
+
     setTimeout(() => {
         resolve('ellie');
         reject(new Error('no network'));
     }, 1000);
+
 });
 
 
@@ -50,14 +52,16 @@ const fetchNumber = new Promise( (resolve, reject) => {
 });
 
 fetchNumber
-    .then( (num) => (num * 2) )   // 2
-    .then( (num) => (num * 3) )    // 6
+    .then( (num) => num * 2 )   // 2
+    .then( (num) => num * 3 )    // 6
     .then( (num) => {
         return new Promise( (resolve, reject) => {
             setTimeout( () => { resolve(num - 1) }, 1000);
         });
     })
-    .then( (num) => { console.log(num) } );
+    .then( (num) => {
+        console.log(num)
+    });
 
 
 // ====================
@@ -69,7 +73,9 @@ const getHen = () =>
     });
 const getEgg = (hen) => 
     new Promise( (resolve, reject) => {
-        setTimeout( () =>  resolve(`${hen} => 에그` ) , 1000 )
+        // setTimeout( () =>  resolve(`${hen} => 에그` ) , 1000 )
+        setTimeout( () =>  reject(new Error(`error ! ${hen} => 에그`)) , 1000 )
+        
     });
 const cook = (egg) => 
     new Promise( (resolve, reject) => {
@@ -77,6 +83,30 @@ const cook = (egg) =>
     });
 
 getHen()
-    .then( hen =>  getEgg(hen)  )
-    .then( egg =>  cook(egg)  )
-    .then( meal =>  console.log(meal)  );
+    // .then( hen =>  getEgg(hen)  )
+    // .then( egg =>  cook(egg)  )
+    // .then( meal =>  console.log(meal)  );
+    .then(getEgg)
+    .catch(error => {
+        return '빵';
+    })
+    .then(cook)
+    .then(console.log)
+    .catch(console.log);
+
+
+// =========================
+// () => {}, () => () // 중괄호, 소괄호
+// =========================
+let a = () => {
+    return 'Hello';
+}
+console.log(a());
+// 명시적인 return 필요
+
+let b = () => (
+    'Hello b'
+);
+console.log(b());
+// () 자체가 리턴
+
