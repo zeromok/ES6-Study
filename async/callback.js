@@ -1,7 +1,7 @@
 
 // 자바스크립트는 동기적 이다.
 console.log('1');
-setTimeout( () => console.log('2') , 1000 );
+setTimeout( () => { console.log('2'); } , 1000 );
 console.log('3');
 
 // ======================
@@ -10,7 +10,8 @@ console.log('3');
 function printImmediately(print) {
     print();
 }
-printImmediately( () => console.log('Hello') ); // Hello
+printImmediately( () => { console.log('Hello'); } ); // Hello
+// print = 콜백함수 = () => {}
 
 // ======================
 // Asynchronous Callback - 언제실행될지 알 수 없는 : 비동기
@@ -69,7 +70,7 @@ const password = prompt('enter your password');
 userStorage.loginUser(
     id,
     password,
-    // onSuccess(id), 받아오는 값들
+    // user = onSuccess(id), 받아오는 값들
     (user) => {
         // onSuccess
         // 성공했다면, 그 정보를 이용해 
