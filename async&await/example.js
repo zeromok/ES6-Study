@@ -31,3 +31,9 @@ async function fetchUser() {
 const user3 = fetchUser();
 user3.then(console.log)
 
+
+// =========================
+// Await
+// =========================
+
+
