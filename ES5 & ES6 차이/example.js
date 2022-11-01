@@ -80,6 +80,31 @@ console.log(test.getWeight());  // 100
 // ==========================
 // Default Parameter
 // ==========================
+// ES5
+function multiply1(a, b) {
+    return a * b;
+  }
+  
+  console.log(multiply1(5, 2)); // 10
+  console.log(multiply1(5));    // NaN
+
+// 과거에는 ES6처럼 쓰려면 함수안에 조건식을 사용했다.
+function multiply(a, b) {
+    b = typeof b !== "undefined" ? b : 1;
+    // typeof b !== "undefined" 의 값을 ? b : 1 비교 후 b에 대입
+    return a * b;
+  }
+  
+  console.log(multiply(5, 2));   // 10
+  console.log(multiply(5));      // 5
+
+// ES6
+function multiply2(a, b = 1) {
+    return a * b;
+  }
+  
+  console.log(multiply2(5, 2));  // 10
+  console.log(multiply2(5));     // 5
 
 
 // ==========================
