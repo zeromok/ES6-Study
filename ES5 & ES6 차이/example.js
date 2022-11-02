@@ -2,7 +2,7 @@
 /*
     ES5 와 ES6는 많은 차이가 있다.
     차이점을 이해해 보자
-    왜? 렉시코드의를 최신 문법으로의 리팩토링, 유지보수 등
+    왜? 레거시코드를 최신 문법으로의 리팩토링, 유지보수 등
     ES6 이후의 JS를 모던자바스크립트라고 부르고 있다.
 */
 
@@ -197,18 +197,68 @@ Person.sayHello();  // Hello
 // ==========================
 // Module
 // ==========================
-
+/*
+    - JS 코드를 담고있는 파일
+    - export, import 구문을 사용할 수 있다.
+    - strict mode(엄격모드)로 동작한다.
+    - Module Scope가 존재
+*/
 
 // ==========================
-// destructuring
+// destructuring(구조 분해 할당)
 // ==========================
+// 객체나 배열을 변수로 분해
+let arr = ['a', 'b', 'c']
+let [one, two, three] = arr;
+
+console.log(one);   // a
+console.log(two);   // b
+console.log(three); // c
+
+let [one1, , three1] = arr;
+// 두번째 요소는 필요하지 않을때, 할당할 변수가 없어도 생략
 
 
 // ==========================
 // Promise
 // ==========================
+/*
+    비동기처리에 사용되는 객체
+*/
+
+function getData() {
+    return new Promise(function(resolve, reject) {
+        $.get('url 주소/products/1', function(response) {
+            if(response) {
+                resolve(response);
+            }
+            reject(new Error('not found'))
+        })
+    })
+}
+
+
+getData()
+    .then(function(data) {
+        console.log(data);
+    })
+    .catch(function(error) {
+        console.log(error);
+    })
 
 
 // ==========================
 // String Method
 // ==========================
+/*
+    String 객체에 정의된 문자열과 관련된 작업을 할 때 사용하는 메소드들
+*/
+// String.fromCharCode(); : 쉼표로 구분되는 일련의 유니코드에 해당하는 문자로 구성된 문자열 반환 
+String.fromCharCode(65, 66, 67);    // "ABC"
+
+// String.fromCodePoint(); : 쉼표로 구분되는 일련의 코드포인트에 해당하는 문자들로 구성된 문자열 반환
+// 사파리, 익스플로어에서 지원되지 않음
+String.fromCodePoint(65, 66, 67);   // "ABC"
+String.fromCodePoint(194564);   // "￦uD87E￦DC04"
+
+// 위 메소드들 뿐만아니라 여러 기능들이 담긴 메소드들이 많다.
