@@ -113,19 +113,85 @@ function multiply2(a, b = 1) {
 // 백틱의 사용 (``), ${} 으로 JS표현식을 넣을 수 있다.
 
 // ES5
+var firstName = 'aaa';
+var lastName = 'bbb';
+var name = 'My name is ' + firstName + ' ' + lastName + '.';
+console.log(name);  // My name is aaa bbb.
 
 // ES6
-
+let name1 = `My name is ${firstName} ${lastName}.`
+console.log(name1); // My name is aaa bbb.
 
 
 // ==========================
 // Multi-line String
 // ==========================
+//ES5
+var lorem = 'a \nb \nc'
+console.log(lorem); // \n : 줄바꿈, 정규식을 사용해 줄바꿈
+
+//ES6
+const lorem1 = `a
+b
+c`
+console.log(lorem1);    // 여러라인의 문자열 표현 가능
 
 
 // ==========================
 // Class
 // ==========================
+/*
+  자바 스크립트는 프로토타입(Prototype)기반 객체지향 언어다.
+    - 클래스가 필요없는 객체지향 프로그래밍 언어
+*/
+// ES5 생성자 함수
+var Person0 = (function() {
+    function Person0(name) {
+        this.name = name;
+    }
+
+    // 프로토타입 메소드
+    Person0.prototype.sayHi = function() {
+        console.log('Hi My name is ' + this.name);
+    };
+
+    // 생성자 함수 반환
+    return Person0;
+}());
+var me = new Person0('Lee');
+me.sayHi(); // Hi My name is Lee
+
+// ES6
+class Person{
+
+    // 생성자
+    constructor(name){
+        // 인스턴스 생성 & 초기화
+        this.name = name;
+    }
+
+    // 프로토타입 메소드
+    sayHi() {
+        console.log(`My name is ${this.name}`);
+    }
+
+    // 정적 메소드
+    static sayHello(){
+        console.log('Hello');
+    }
+}// end class
+
+// 인스턴스 생성
+const me1 = new Person('Lee');
+
+// 프로퍼티 참조
+console.log(me.name);   // Lee
+
+// 메소드 호출
+me1.sayHi();        // My name is Lee
+
+// 정적메소드 호출
+Person.sayHello();  // Hello
 
 
 // ==========================
