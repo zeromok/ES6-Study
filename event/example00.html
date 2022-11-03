@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button class="myButton">Click me! 00</button>
+
+    <script>
+        document.querySelector('.myButton').addEventListener('click', function() {
+            alert('Clicked!');
+        });
+    </script>
+
+    <!-- 인라인 이벤트 핸들러 방식 #더이상 사용되지 않음-->
+    <button onclick="myHandler()">Click me! 01</button>
+    <script>
+        function myHandler() {
+            alert('Clicked!');
+        }
+    </script>
+
+    <!-- 프로퍼티 이벤트 핸들러 방식 -->
+    <button class="btn">Click me! 02</button>
+    <script>
+        const btn = document.querySelector('.btn');
+
+        // 이벤트에 하나의 이벤트핸들러만 등록된다.
+        // 첫번째 바인딩된 이벤트 핸들러 -> 실행되지 않는다.
+        btn.onclick = function() {
+            alert('Button clicked 1');
+        };
+
+        // 두번째 바인딩된 이벤트 핸들러
+        btn.onclick = function () {
+            alert('Button clicked 2');
+        };
+
+        // =============================
+        // addEventListener 메소드 방식
+        // =============================
+        // 첫번째 바인딩된 이벤트 핸들러
+        btn.addEventListener('click', function () {
+        alert('② Button clicked 1');
+        });
+
+        // 두번째 바인딩된 이벤트 핸들러
+        btn.addEventListener('click', function () {
+        alert('② Button clicked 2');
+        });
+    </script>
+
+    <label>User name <input type="text"/></label>
+    <!-- em : 강조된 텍스트 표현 -->
+    <em class="message"></em>
+
+    <script>
+        const input = document.querySelector('input[type=text]');
+        const msg = document.querySelector('.message');
+        const name_length = 2;  // 이름 최소 길이
+
+        function checkName(n) {
+            if(input.value.length < n){
+                msg.innerHTML = '이름은 ' + n + '자 이상 입력해 주세요';
+            }else{
+                msg.innerHTML = '';
+            }
+        }
+
+        // blur : 요소가 포커스를 잃을 때 발생
+        input.addEventListener('blur', function() {
+            // alert('blur event occurred!');
+           checkName(name_length);  // 핸들러 내부에서 함수호출
+        });
+    </script>
+</body>
+</html>
