@@ -80,9 +80,54 @@
             1: "김승현"
         }
     ];
-    test3.forEach((e) => {
-        console.log(e);
+    /*
+        
+    */
+    test3[0]        // {2: 박병목}
+    test3[1]        // {1: 김승현}
+    test3[0]["2"]   // 박병목
+    test3[1]["1"]   // 김승현
+    let a = Object.keys(test3[0]); // ['2']
+    let b = Object.keys(test3[1]); // ['1']
+    Object.keys(test3[0]).join(); // '2'
+    Object.keys(test3[1]).join(); // '1'
+    let key1 = Object.keys(test3[0]).join();
+    let key2 = Object.keys(test3[1]).join();
+
+    let obj_key = [];
+    let obj_value;
+    test3.forEach( (value) => {
+        obj_key.push(Object.keys(value));
+        obj_value = value[obj_key];
     });
+    console.log(obj_key);
+    console.log(obj_value);
+
+
+    
+    // let newArr = [];
+    // if(key1 > key2){
+    //     newArr.push(test3[1]);
+    //     newArr.push(test3[0]);
+    // }
+    // console.log(newArr);
+    
+
+
+
+    // let newArr = [];  
+    // let newObj1 = {};
+
+    // newObj1[1] = "김승현";
+    // console.log(newObj1);
+
+    // let newObj2 = {};
+    // newObj2[2] = "박병목";
+
+    // newArr.push(newObj1, newObj2);
+    // console.log(newArr);
+   
+
 
     const test4 = [
         {
