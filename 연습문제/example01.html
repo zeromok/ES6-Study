@@ -52,27 +52,8 @@
     //     return (Number(a.match(/(\d+)/g)[0]) - Number((b.match(/(\d+)/g)[0])));
     // }));
 
+
     const test = [
-        {
-            "나": "김승현"
-        },
-        {
-            "가": "박병목"
-        }
-    ];
-    
-
-
-    const test2 = [
-        {
-            c: "박병목"
-        },
-        {
-            a: "김승현"
-        }
-    ];
-
-    const test3 = [
         {
             2: "박병목"
         },
@@ -88,26 +69,26 @@
     ];
 
     // example
-    test3[0]        // {2: 박병목}
-    test3[1]        // {1: 김승현}
-    test3[0]["2"]   // 박병목
-    test3[1]["1"]   // 김승현
-    let xx = Object.keys(test3[0]); // ['2']
-    let yy = Object.keys(test3[1]); // ['1']
-    Object.keys(test3[0]).join(); // '2'
-    Object.keys(test3[1]).join(); // '1'
-    let key1 = Object.keys(test3[0]).join();
-    let key2 = Object.keys(test3[1]).join();
+    test[0]        // {2: 박병목}
+    test[1]        // {1: 김승현}
+    test[0]["2"]   // 박병목
+    test[1]["1"]   // 김승현
+    let xx = Object.keys(test[0]); // ['2']
+    let yy = Object.keys(test[1]); // ['1']
+    Object.keys(test[0]).join(); // '2'
+    Object.keys(test[1]).join(); // '1'
+    let key1 = Object.keys(test[0]).join();
+    let key2 = Object.keys(test[1]).join();
 
     // 방법 1.
     // 배열안 객체의 수가 많을 때에는 좋지 않은 방법이다.
-    // let x = test3[1];
-    // let y = test3[0];
+    // let x = test[1];
+    // let y = test[0];
 
     // let newArr = [];
     // newArr.push(x, y);
     // console.log(newArr);
-    // console.log(test3);
+    // console.log(test);
 
     // 방법 2.
    
@@ -116,7 +97,7 @@
             a < b = 1
             a = b = 0
         */
-    test3.sort( (a, b) => {
+    test.sort( (a, b) => {
         let x = Object.keys(a)[0];  // 1, 4, 3
         let y = Object.keys(b)[0];  // 2, 1, 4
         // x - y = - ===> x, y
@@ -127,19 +108,46 @@
     // console.log(Object.keys(a));    // ['1'], ['4'], ['3']
     // console.log(Object.keys(b));    // ['2'], ['1'], ['4']
     // console.log(Object.keys(a)[0]); // 1, 4, 3
+    // console.log(test);
 
-    console.log(test3);
 
-    
-
-    const test4 = [
+    // 값을 기준으로 정렬해보자
+    const test0 = [
         {
-            "2": "박병목"
+            2: "789"
         },
         {
-            "1": "김승현"
+            1: "123"
+        },
+        {
+            4: "456"
+        },
+        {
+            3: "101112"
         }
     ];
+
+
+    // for...in : 객체의 모든 열거 가능한 속성에 대해 반복 -> 객체순환
+    // JS에서는 배열도 객체
+   for(let a in test0){
+        console.log(a, test0[a]);
+        // 인덱스, 인덱스를 이용한 프로퍼티 접근
+   }
+
+   // for...of : [Symbol.iterator] 속성을 가지는 컬렉션 전용 -> 배열의 값 순환
+   for(let b of test0){
+        console.log(b);
+        // 인덱스의 값
+   }
+
+   test0.sort( (a, b) => {
+        let x = a[Object.keys(a)];
+        let y = b[Object.keys(b)];
+        return x - y;
+   });
+   console.log(test0);
+   
 
 
     // let result = [
