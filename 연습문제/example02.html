@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let data = ["a", "B", "c", "d", "E"];
+    
+    // 1.
+    // let newData00 = [];
+    // let result00 = data.forEach( (e) => {
+    //     newData00.push(e.toUpperCase());
+    // } );
+    // console.log(newData00);
+    // console.log(newData00.reverse());
+
+    // let newData01 = [];
+    // let result01 = data.forEach( (e) => {
+    //     newData01.push(e.toLowerCase());
+    // });
+    // console.log(newData01);
+    // console.log(newData01.reverse());
+
+    // 2.
+    let upData = [];
+    let lowData = [];
+    let result03 = data.forEach( (e) => {
+        upData.push(e.toUpperCase());
+        lowData.push(e.toLowerCase());
+    });
+    console.log(upData);
+    console.log(upData.reverse());
+    console.log(lowData);
+    console.log(lowData.reverse());
+
+
+    
+    
+
+</script>
+<body>
+    
+</body>
+</html>
