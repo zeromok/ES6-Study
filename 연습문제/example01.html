@@ -86,8 +86,8 @@
     test3[1]        // {1: 김승현}
     test3[0]["2"]   // 박병목
     test3[1]["1"]   // 김승현
-    Object.keys(test3[0]); // ['2']
-    Object.keys(test3[1]); // ['1']
+    let x = Object.keys(test3[0]); // ['2']
+    let y = Object.keys(test3[1]); // ['1']
     Object.keys(test3[0]).join(); // '2'
     Object.keys(test3[1]).join(); // '1'
     let key1 = Object.keys(test3[0]).join();
@@ -95,16 +95,17 @@
 
     // 방법 1.
     // 배열안 객체의 수가 많을 때에는 좋지 않은 방법이다.
-    let x = test3[1];
-    let y = test3[0];
+    // let x = test3[1];
+    // let y = test3[0];
 
-    let newArr = [];
-    newArr.push(x, y);
-    console.log(newArr);
-    console.log(test3);
+    // let newArr = [];
+    // newArr.push(x, y);
+    // console.log(newArr);
+    // console.log(test3);
 
     // 방법 2.
-    let [a, b] = test3;             // a : {2: 박병목}, b : {1: 김승현}
+    // let [a, b] = test3;             // a : {2: 박병목}, b : {1: 김승현}
+
 
     const test4 = [
         {
