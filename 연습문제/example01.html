@@ -78,6 +78,12 @@
         },
         {
             1: "김승현"
+        },
+        {
+            4: "라마바"
+        },
+        {
+            3: "가나다"
         }
     ];
 
@@ -86,8 +92,8 @@
     test3[1]        // {1: 김승현}
     test3[0]["2"]   // 박병목
     test3[1]["1"]   // 김승현
-    let x = Object.keys(test3[0]); // ['2']
-    let y = Object.keys(test3[1]); // ['1']
+    let xx = Object.keys(test3[0]); // ['2']
+    let yy = Object.keys(test3[1]); // ['1']
     Object.keys(test3[0]).join(); // '2'
     Object.keys(test3[1]).join(); // '1'
     let key1 = Object.keys(test3[0]).join();
@@ -104,8 +110,27 @@
     // console.log(test3);
 
     // 방법 2.
-    // let [a, b] = test3;             // a : {2: 박병목}, b : {1: 김승현}
+   
+        /*
+            a > b = -1
+            a < b = 1
+            a = b = 0
+        */
+    test3.sort( (a, b) => {
+        let x = Object.keys(a)[0];  // 1, 4, 3
+        let y = Object.keys(b)[0];  // 2, 1, 4
+        // x - y = - ===> x, y
+        // x - y = + ===> y, x 
+        // x - y = 0 ===> 그대로
+        return x - y;
+    });
+    // console.log(Object.keys(a));    // ['1'], ['4'], ['3']
+    // console.log(Object.keys(b));    // ['2'], ['1'], ['4']
+    // console.log(Object.keys(a)[0]); // 1, 4, 3
 
+    console.log(test3);
+
+    
 
     const test4 = [
         {
