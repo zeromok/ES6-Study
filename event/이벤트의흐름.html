@@ -7,8 +7,8 @@
     <title>Document</title>
     
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script>
-
 
 </script>
 <body>
@@ -17,14 +17,40 @@
         캡처링 : 자식요소에서 발생한 이벤트가 부모요소부터 시작하여 자식요소까지 전달
         *** 캡처링부터 시작하여 버블링으로 종료
      -->
-     <div id="b">
+     <!-- <div id="b">
         <button id="btn1" class="a">111</button>
         <button id="btn2" class="a">222</button>
         <button id="btn3" class="a">333</button>
-     </div>
+     </div> -->
+
+     <button>Click me</button>
+     <script>
+        const button = document.getElementsByTagName("button")[0];
+        // const button = document.querySelector("button");
+        // const button = $("button")[0];   // 제이쿼리
+
+        // =================================
+        // 이벤트 핸들러 등록 방식
+        // =================================
+
+        // 프로퍼티 이벤트 핸들러 등록
+        button.onclick = () => { 
+            alert("Button click1");
+        };// 실행되지 않음
+        button.onclick = () => { 
+            alert("Button click2");
+        };
+
+        // 이벤트 리스너
+        // button.addEventListener("click", () => {
+        //     alert("Button click1");
+        // });
+        // button.addEventListener("click", () => {
+        //     alert("Button click2");
+        // });
+
+
+     </script>
     
 </body>
-<!-- <script>
-    print("test");
-</script> -->
 </html>
