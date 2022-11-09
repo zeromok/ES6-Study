@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+    // ex1
+        let response = {
+            data: {
+                success: true,
+                message: "success",
+                data: {
+                    O_ERR_CODE: 0,
+                    O_DATA: [{
+                        CUSTOMER_PHONE_NUMBER: "01046103787",
+                        AUTO_ACCOUNT_YN: "Y",
+                        CUSTOMER_NAME: "박병목",
+                        CUSTOMER_ADDRESS: "서울특별시 마포구 대흥로 111-1 평화빌딩 3층"
+                    }],
+                    O_ERR_MSG: null
+                }
+            },
+            message: "success",
+            success: true
+        };
+
+    /*
+        위의 resonse는 어느 서버에 고객정보를 받아온 상태입니다.
+        위의 response 객체를 이용하여 아래의 양식에 알맞게 데이터를 위치 하세요.
+    */
+    let data = response.data.data.O_DATA[0];
+    // document.querySelectorAll("span")[1].innerText = data.CUSTOMER_NAME;
+    // document.querySelectorAll("span")[2].innerText = data.CUSTOMER_PHONE_NUMBER;
+    // document.querySelectorAll("span")[3].innerText = data.AUTO_ACCOUNT_YN;
+    // document.querySelectorAll("span")[4].innerText = data.CUSTOMER_ADDRESS;
+
+    // document.getElementById("name").innerText = data.CUSTOMER_NAME;
+    // document.getElementById("number").innerText = data.CUSTOMER_PHONE_NUMBER;
+    // document.getElementById("account").innerText = data.AUTO_ACCOUNT_YN;
+    // document.getElementById("addr").innerText = data.CUSTOMER_ADDRESS;
+
+    // 제이쿼리 사용
+    $("#name").text(data.CUSTOMER_NAME);
+    $("#number").text(data.CUSTOMER_PHONE_NUMBER);
+    $("#account").text(data.AUTO_ACCOUNT_YN);
+    $("#addr").text(data.CUSTOMER_ADDRESS);
+
+
+    // ex2
+    /*
+        현재 상태 값은 0 입니다.
+        + 버튼을 누르는 경우 현재 상태값이 1씩 중가,
+        - 버튼을 누르는 경우 현재 상태값이 1씩 감소,
+        초기화 버튼을 누르는 경우 0 으로 초기화 되도록 해주세요.
+
+        ※ 상태 값의 범위는 -30 ~ 30 으로 제한 합니다.
+    */
+
+        let count = 0;
+        let value = document.querySelectorAll("span")[5];
+        let button = document.querySelectorAll("button");
+
+        // 1. onclick 사용
+        // button[0].onclick = () => {
+        //     if(count == 5){
+        //         alert(count + "회 이상 클릭하실 수 없습니다.");
+        //     }else{
+        //         count++;
+        //         value.innerText = count;
+        //     }
+        // }
+        // button[1].onclick = () => {
+        //     count = 0;
+        //     value.innerText = count;
+        // }
+        // button[2].onclick = () => {
+        //     if(count == -5){
+        //         alert(count + "회 이상 클릭하실 수 없습니다.");
+        //     }else{
+        //         count--;
+        //         value.innerText = count;
+        //     }
+        // }
+
+        // 2. addEventListerner 사용
+        // button[0].addEventListener("click", () => {
+        //     if(count == 5){
+        //         alert(count + "회 이상 클릭하실 수 없습니다.");
+        //     }else{
+        //         count++;
+        //         value.innerText = count;
+        //     }
+        // });
+
+
+        // button[1].addEventListener("click", () => {
+        //     count = 0;
+        //     value.innerText = count;
+        // });
+
+        // button[2].addEventListener("click", () => {
+        //     if(count == -5){
+        //         alert(count + "회 이상 클릭하실 수 없습니다.");
+        //     }else{
+        //         count--;
+        //         value.innerText = count;
+        //     }
+        // });
+
+        // 3. switch문 사용
+        document.addEventListener("click", (e) => {
+            switch(e.target.id){
+                case"btn1":
+                    if(count == 5){
+                        alert(count + "회 이상 클릭하실 수 없습니다.");
+                    }else{
+                        count++;
+                        value.innerText = count;
+                    }
+                break;
+                case"reset":
+                    count = 0;
+                    value.innerText = count;
+                break;
+                case"btn2":
+                    if(count == -5){
+                        alert(count + "회 이상 클릭하실 수 없습니다.");
+                    }else{
+                        count--;
+                        value.innerText = count;
+                    }
+                break;
+            }
+        });
+
+
+    });
+
+</script>
+<body>
+    <!-- ex1 -->
+    <section style="width: 50%; border: 1px solid black;">
+        <div style="background-color: rgb(255, 161, 161);">
+            <span>response에 있는 고객 정보를 알맞은 위치에 표기하세요.</span>
+        </div>
+        <div>
+            <p>고객명: <span id="name"></span></p>
+            <p>휴대폰번호: <span id="number"></span></p>
+            <p>자동이체 사용 여부: <span id="account"></span></p>
+            <p>주소: <span id="addr"></span></p>
+        </div>
+    </section>
+
+    <!-- ex2 -->
+    <section style="margin: 30px 0px 0px 0px; width: 50%; border: 1px solid black;">
+        <div style="background-color: rgb(255, 161, 161);">
+            <p style="margin: 0;">"+버튼", "-버튼", "초기화 버튼"을 누를 때 마다 현재 상태 값이 변하게 해주세요.</p>
+            <p>현재 값의 범위는 -30 ~ 30 으로 제한 하며, 제한 범위를 넘게 되는 경우 팝업 메시지로 적절한 문구를 표기해주세요.</p>
+        </div>
+        <div>
+            <p>현재 값: <span id="count">0</span></p>
+            <button id="btn1">+</button>
+            <button id="reset">초기화</button>
+            <button id="btn2">-</button>
+        </div>
+    </section>
+</body>
+</html>
