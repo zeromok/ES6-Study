@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    /*
+        아이디 action 버튼 클릭시 input의 숫자 값을 곱하여 
+		아이디 result에 결과 값을 뿌려주시오
+		(계산값이 50 이상일 경우 텍스트 색상 빨강, 50미만 일 경우 검정)
+    */
+
+   document.addEventListener("DOMContentLoaded", () => {
+
+    document.getElementById("action1").onclick = () => {
+        let value = document.getElementsByTagName("input")[0].value * document.getElementsByTagName("input")[1].value;
+        if(value > 50){
+            document.getElementById("result1").style.color = "red";
+            document.getElementById("result1").innerText = value;
+        }else{
+            document.getElementById("result1").innerText = value;
+        }
+    }
+
+    document.getElementById("action2").onclick = () => {
+        let value = document.getElementsByTagName("input")[2].value * document.getElementsByTagName("input")[3].value;
+        if(value > 50){
+            document.getElementById("result2").style.color = "red";
+            document.getElementById("result2").innerText = value;
+        }else{
+            document.getElementById("result2").innerText = value;
+        }
+    }
+
+
+   });
+</script>
+<body>
+    <div>
+        <input type="number" placeholder="값 1"/> X <input type="number" placeholder="값 2"/>
+        <button id="action1">계산하기</button>
+        <div id="result1"></div>
+    </div>
+    <div>
+        <input type="text" placeholder="값 1"/> X <input type="text" placeholder="값 2"/>
+        <button id="action2">계산하기</button>
+        <div id="result2"></div>
+    </div>
+
+</body>
+</html>
