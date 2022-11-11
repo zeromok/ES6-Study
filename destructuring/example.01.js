@@ -67,5 +67,3 @@ let [, , {noodle3}] = noodles;  // noodle3 = 메밀면
 // 프로퍼티 key 접근
 console.log(Object.keys(noodles[0]));       // [ 'noodle', 'soup', 'topping' ]
 console.log(Object.keys(noodles[0])[0]);    // noodle
-
-// 
