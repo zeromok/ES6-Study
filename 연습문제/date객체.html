@@ -16,7 +16,7 @@
             */
 
             let date00 = new Date(2012, 01, 20, 03, 12).toLocaleString();
-            alert(date00); // 2012. 2. 20. 오전 3:12:00
+            // alert(date00); // 2012. 2. 20. 오전 3:12:00
 
 
             /*
@@ -32,7 +32,7 @@
                 let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
                 return days[date.getDay()];
             }
-            alert(getWeekDay(date01));
+            // alert(getWeekDay(date01));
 
 
             /*
@@ -56,9 +56,9 @@
                     return date.getDay() + 7;
                 }
             }
-            alert( getLocalDay() );
+            // alert( getLocalDay() );
 
-            // 단축한 코드
+            // 단축 코드
             let date03 = new Date(2022, 10, 15);
             function getLocalDay00(date) {
                 if(date.getDay() == 0){
@@ -66,7 +66,39 @@
                 }
                 return date.getDay();
             }
-            alert( getLocalDay00(date03) );
+            // alert( getLocalDay00(date03) );
+
+
+            /*
+                === n일 전 "일" 출력하기 ===
+                date를 기준으로 days일 전 '일’을 반환하는 함수 getDateAgo(date, days)를 만들어보세요,
+                오늘이 20일이라면 getDateAgo(new Date(), 1)는 19를, getDateAgo(new Date(), 2)는 18을 반환해야 합니다.
+                days가 365일 때도 제대로 동작해야 합니다.
+                예시)
+                    let date = new Date(2015, 0, 2); // 2015년 1월 2일
+                    alert( getDateAgo(date, 1) ); // 1, (2015년 1월 1일)
+                    alert( getDateAgo(date, 2) ); // 31, (2014년 12월 31일)
+                    alert( getDateAgo(date, 365) ); // 2, (2014년 1월 2일)
+            */
+           let date04 = new Date(2015, 0, 2);
+           function getDateAgo(date, days) {
+                /*
+                    나의 답
+                    let ago = date.getDate() - days;
+                    return ago;
+
+                    너무 일차원적인 답이였다.
+                */
+                let dateCopy = new Date(date);
+                dateCopy.setDate(date.getDate() - days);
+                /*
+                    매개변수로 들어온 날짜(date)를 [(1970년 1월 1일을 기준)date - days를 뺀 날짜] = setDate()로 변경
+                */
+                return dateCopy.getDate();
+           }
+           alert( getDateAgo(date04, 1) );
+           alert( getDateAgo(date04, 2) );
+           alert( getDateAgo(date04, 365) );
 
 
         });
