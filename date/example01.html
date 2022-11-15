@@ -9,6 +9,10 @@
 
         document.addEventListener("DOMContentLoaded", () => {
 
+           // =============================
+           // Date 객체
+           // =============================
+
             // new Date() : 현재 날짜 및 시간이 저장된 Date 객체가 반환됨
             let date00 = new Date();
             document.querySelector("#time00").innerText = date00;
@@ -26,6 +30,59 @@
             let date02 = new Date("2022-11-15");
             document.querySelector("#time02").innerText = date02;
 
+            // new Date(year, month, date, [hours, minutes, seconds, ms]) : 주어진 인수를 조합해 만들 수 있는 날짜가 저장된 객체가 반환됩니다(지역 시간대 기준). 첫 번째와 두 번째 인수만 필수값입니다.
+            /*
+                year 은 반드시 4자리 숫자여야 한다.
+                month 는 0(1월)부터 11(12월) 사이의 숫자여야 한다.
+                date는 일을 나타내는데, 값이 없는 경우엔 1일로 처리됨
+                hours/minutes/seconds/ms에 값이 없는 경우엔 0으로 처리됨
+            */
+           let date03 = new Date(2022, 11, 15);
+           document.querySelector("#time03").innerText = date03;
+
+           
+           // =============================
+           // 날짜의 구성요소 얻기
+           // =============================
+
+           // getFullYear() : 연도(4자리)를 반환
+           let date04 = new Date().getFullYear();
+           document.querySelector("#time04").innerText = date04;
+
+           // getMonth() : 월 을 반환( 0 이상 11 이하 )
+           /*
+                *** 주의
+                0부터 시작하므로 + 1 해주기 !
+           */
+           let date05 = new Date().getMonth() + 1;
+           document.querySelector("#time05").innerText = date05;
+
+           // getDate() : 일 을 반환( 1 이상 31 이하 )
+           let date06 = new Date().getDate();
+           document.querySelector("#time06").innerText = date06;
+
+           // getHours() : 시 반환
+           let date07 = new Date().getHours();
+
+           // getMinutes() : 분 반환
+           let date08 = new Date().getMinutes();
+
+           // getSeconds() : 초 반환
+           let date09 = new Date().getSeconds();
+
+           // getMilliseconds() : 밀리초 반환
+           let date10 = new Date().getMilliseconds();
+
+           // getDay() : 일요일을 나타내는 0부터 토요일을 나타내는 6까지의 숫자 중 하나를 반환합니다.(현재요일 기준)
+           //            몇몇 나라에서 요일의 첫날이 일요일이 아니긴 하지만, getDay에선 항상 0이 일요일을 나타냅니다. 이를 변경할 방법은 없습니다.
+           let date11 = new Date().getDay();
+           document.querySelector("#time07").innerText = date11;
+
+
+            // =============================
+            // 날짜의 구성요소 설정하기
+            // =============================
+
         });
         
     </script>
@@ -34,5 +91,10 @@
     <div>1. 현재 시간 : new Date() <p id="time00"></p></div> <!-- Tue Nov 15 2022 09:17:05 GMT+0900 (한국 표준시) -->
     <div>2. new Date(milliseconds) <p id="time01"></p></div> <!-- Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시) -->
     <div>3. new Date(datestring) <p id="time02"></p></div> <!-- Tue Nov 15 2022 09:00:00 GMT+0900 (한국 표준시) -->
+    <div>4. new Date(year, month, date, [hours, minutes, seconds, ms]) <p id="time03"></p></div> <!-- Thu Dec 15 2022 00:00:00 GMT+0900 (한국 표준시) -->
+    <div>5. new Date().getFullYear() <p id="time04"></p></div> <!-- 2022 -->
+    <div>6. new Date().getMonth() <p id="time05"></p></div> <!-- 11 -->
+    <div>7. new Date().getDate() <p id="time06"></p></div> <!-- 15 -->
+    <div>8. new Date().getDay() <p id="time07"></p></div> <!-- 2(현재 화요일) -->
 </body>
 </html>
