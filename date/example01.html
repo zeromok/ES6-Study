@@ -33,11 +33,11 @@
             // new Date(year, month, date, [hours, minutes, seconds, ms]) : 주어진 인수를 조합해 만들 수 있는 날짜가 저장된 객체가 반환됩니다(지역 시간대 기준). 첫 번째와 두 번째 인수만 필수값입니다.
             /*
                 year 은 반드시 4자리 숫자여야 한다.
-                month 는 0(1월)부터 11(12월) 사이의 숫자여야 한다.
+                month 는 0(1월)부터 11(12월) 사이의 숫자여야 한다. ***
                 date는 일을 나타내는데, 값이 없는 경우엔 1일로 처리됨
                 hours/minutes/seconds/ms에 값이 없는 경우엔 0으로 처리됨
             */
-           let date03 = new Date(2022, 11, 15);
+           let date03 = new Date(2022, 10, 15);
            document.querySelector("#time03").innerText = date03;
 
            
@@ -51,7 +51,7 @@
 
            // getMonth() : 월 을 반환( 0 이상 11 이하 )
            //    *** 주의
-           let date05 = new Date().getMonth();
+           let date05 = new Date().getMonth() + 1;
            document.querySelector("#time05").innerText = date05;
 
                 
