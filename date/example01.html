@@ -81,20 +81,96 @@
 
             // =============================
             // 날짜의 구성요소 설정하기
+            // number, 지정한 시간을 1970년 1월 1일을 기준으로 하는 밀리세컨드로 리턴
             // =============================
+            
+            // setFullYear(year, [month, date])
+            let date12 = new Date().setFullYear(2022, 12, 25);
+            document.querySelector("#time08").innerText = date12;
+
+            // setMonth(month, [date])
+            let date13 = new Date().setMonth(12, 25);
+            document.querySelector("#time09").innerText = date13;
+
+            // setDate(date)
+            // setHours(hour, [min, sec, ms])
+            // setMinutes(min, [sec, ms])
+            // setSeconds(sec, [ms])
+            // setMilliseconds(ms)
+            // setTime(millisconds) : 1970년 1월 1일 00:00:00 UTC부터 밀리초 이후를 나타내는 날짜를 설정
+
+
+            // =============================
+            // 자동고침(autocorrection) 
+            // Date 객체엔 자동 고침 이라는 유용한 기능이 있습니다. 범위를 벗어나는 값을 설정하려고 하면 자동 고침 기능이 활성화되면서 값이 자동으로 수정됩니다.
+            // =============================
+
+            /*
+                입력받은 날짜 구성 요소가 범위를 벗어나면 초과분은 자동으로 다른 날짜 구성요소에 배분됩니다.
+                '2016년 2월 28일’의 이틀 뒤 날짜를 구하고 싶다고 가정해봅시다. 답은 3월 2일 혹은 3월 1일(윤년)이 될 텐데,
+                2016년이 윤년인지 아닌지 생각할 필요 없이 단순히 이틀을 더해주기만 하면 답을 구할 수 있습니다.
+                나머지 작업은 Date 객체가 알아서 처리해 주기 때문이죠.
+            */
+            let date14 = new Date(2022, 0, 32);
+            document.querySelector("#time10").innerText = date14;
+
+            // 일정시간이 지난 후의 날짜 구하기
+            let date15 = new Date();
+            date15.setHours(date15.getHours() + 1);
+            document.querySelector("#time11").innerText = date15;
+
+            
+            // =============================
+            // 날짜 형식 지정 메소드
+            // =============================
+
+            // toString() - String 리턴
+            let date16 = new Date();
+            date16.toString(); // 'Tue Nov 15 2022 10:29:02 GMT+0900 (한국 표준시)'
+
+            // toDateString()
+            let date17 = new Date();
+            date17.toDateString(); // 'Tue Nov 15 2022'
+
+            // toLocaleString()
+            let date18 = new Date();
+            date18.toLocaleString(); // '2022. 11. 15. 오전 10:31:47'
+
+            // toLocaleDateString()
+            let date19 = new Date();
+            date19.toLocaleDateString(); // '2022. 11. 15.'
+
+            // toISOSting()
+            let date20 = new Date();
+            date20.toISOString(); // '2022-11-15T01:33:59.760Z'
+           
+
+
+
 
         });
         
     </script>
 </head>
 <body>
+    <h1>Date 객체</h1>
     <div>1. 현재 시간 : new Date() <p id="time00"></p></div> <!-- Tue Nov 15 2022 09:17:05 GMT+0900 (한국 표준시) -->
     <div>2. new Date(milliseconds) <p id="time01"></p></div> <!-- Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시) -->
     <div>3. new Date(datestring) <p id="time02"></p></div> <!-- Tue Nov 15 2022 09:00:00 GMT+0900 (한국 표준시) -->
     <div>4. new Date(year, month, date, [hours, minutes, seconds, ms]) <p id="time03"></p></div> <!-- Thu Dec 15 2022 00:00:00 GMT+0900 (한국 표준시) -->
+    <h1>날짜 구성요소 얻기</h1>
     <div>5. new Date().getFullYear() <p id="time04"></p></div> <!-- 2022 -->
     <div>6. new Date().getMonth() <p id="time05"></p></div> <!-- 11 -->
     <div>7. new Date().getDate() <p id="time06"></p></div> <!-- 15 -->
     <div>8. new Date().getDay() <p id="time07"></p></div> <!-- 2(현재 화요일) -->
+    <h1>날짜 구성요소 설정하기</h1>
+    <div>9. new Date().setFullYear() <p id="time08"></p></div> <!-- 1674608915990 -->
+    <div>10. new Date().setMonth() <p id="time09"></p></div> <!-- 1674608915990 -->
+    <h1>자동 고침</h1>
+    <div>11. new Date(2022, 0, 32); <p id="time10"></p></div> <!-- Tue Feb 01 2022 00:00:00 GMT+0900 (한국 표준시) -->
+    <div>12. 일정시간이 지난 후의 날짜 구하기 (1시간 후)<p id="time11"></p></div> <!-- Tue Nov 15 2022 11:23:49 GMT+0900 (한국 표준시) -->
+
+
+
 </body>
 </html>
