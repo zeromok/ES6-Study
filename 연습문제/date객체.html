@@ -162,7 +162,24 @@
             // return ( now.getHours() * 3600 ) + ( now.getMinutes() * 60 ) + now.getSeconds();
 
           }
-          alert( getSecondsToday() );
+        //   alert( getSecondsToday() );
+
+        
+        // ======================
+        // 퇴근시간 타이머
+        // ======================
+          function time() {
+            // 퇴근시간을 '초' 단위로 바꾸기
+            let goHome = new Date(2022, 10, 15, 17);
+            let goHomeSec = ( goHome.getHours() * 3600 ) + ( goHome.getMinutes() * 60 ) + goHome.getSeconds();
+            // 퇴근시간 - 오늘 경과 시간
+            let now = new Date();
+            let nowSec = ( now.getHours() * 3600 ) + ( now.getMinutes() * 60 ) + now.getSeconds();
+
+            return document.querySelector("#time").innerText = goHomeSec - nowSec;
+
+          }
+          setInterval(time, 1000);
 
 
         });
@@ -170,6 +187,6 @@
     </script>
 </head>
 <body>
-    
+    퇴근까지 <div id="time"></div> 초 남았습니다.
 </body>
 </html>
