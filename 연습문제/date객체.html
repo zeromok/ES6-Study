@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: auto;
+        }
+        #wrap{
+            position: relative;
+        }
+        #text{
+            position: absolute;
+            top: 25%;
+        }
+    </style>
     <script>
 
 
@@ -164,7 +176,7 @@
           }
         //   alert( getSecondsToday() );
 
-        
+
         // ======================
         // 퇴근시간 타이머
         // ======================
@@ -175,6 +187,9 @@
             // 퇴근시간 - 오늘 경과 시간
             let now = new Date();
             let nowSec = ( now.getHours() * 3600 ) + ( now.getMinutes() * 60 ) + now.getSeconds();
+            if(goHomeSec - nowSec === 0){
+                return document.querySelector("#time").innerText = '퇴근이다!';
+            }
 
             return document.querySelector("#time").innerText = goHomeSec - nowSec;
 
@@ -182,11 +197,55 @@
           setInterval(time, 1000);
 
 
+          /*
+
+            === 상대 날짜 출력하기 ===
+            date를 아래와 같은 형식으로 변경해주는 함수 formatDate(date)를 만들어보세요.
+
+            date가 지금으로부터 1초 미만 전의 날짜를 나타내면 "현재"를 반환해야 합니다.
+            그렇지 않고, date가 지금으로부터 1분 이하 전의 날짜를 나타내면 "n초 전"을 반환해야 합니다.
+            그렇지 않고, date가 지금으로부터 1시간 미만 전의 날짜를 나타내면 "n분 전"을 반환해야 합니다.
+            이 외의 경우는 전체 날짜를 "DD.MM.YY HH:mm"형식("일.월.연 시:분")으로 반환해야 합니다(예시: 31.12.16 10:00).
+            예시)
+                alert( formatDate(new Date(new Date - 1)) ); // "현재"
+                alert( formatDate(new Date(new Date - 30 * 1000)) ); // "30초 전"
+                alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // "5분 전"
+                // 어제를 나타내는 날짜를 "일.월.연 시:분" 포맷으로 출력
+                alert( formatDate(new Date(new Date - 86400 * 1000)) );
+          */
+          function formatDate(date) {
+                /*
+                    현재와 date의 차이를 알려면 빼야한다!
+                */
+               let diff = new Date() - date; // 차이 : 리턴값(ms)
+
+               if(diff < 1000) { // 차이가 1초 미만이라면
+                return '현재';
+               }
+
+               let sec = Math.floor(diff / 1000); // 차이를 '초' 로 변환
+
+               if(sec < 60) { // 차이가 60초=1분 미만이라면
+                return sec + '초 전';
+               }
+
+               let min = Math.floor(diff / 60000); // 차이를 '분' 으로 변환
+
+               if(min < 60) { // 차이가 60분=1시간 미만이라면
+                return min + '분 전';
+               }
+
+          }
+          alert( formatDate(new Date(new Date - 30 * 1000)) );
+
         });
        
     </script>
 </head>
 <body>
-    퇴근까지 <div id="time"></div> 초 남았습니다.
+    <div id="wrap">
+        <img src="/연습문제/bono.jpg" width="400px" id="bono">
+        <div id="text"> <p>퇴근까지</p> <label id="time"></label> 초 남았습니다.</div>
+    </div>
 </body>
 </html>
