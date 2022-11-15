@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        document.addEventListener( "DOMContentLoaded", () => {
+
+            /*
+                === 날짜 생성 하기 === 
+                2012년 2월 20일, 오전 3시 12분을 나타내는 Date 객체를 만들어보세요(시간대는 로컬).
+                그리고 alert 함수를 이용해 생성한 객체를 출력하세요.
+            */
+
+            let date00 = new Date(2012, 01, 20, 03, 12).toLocaleString();
+            alert(date00); // 2012. 2. 20. 오전 3:12:00
+
+
+            /*
+                === 요일 보여주기 ===
+                날짜를 입력하면 ‘MO’, ‘TU’, ‘WE’, ‘TH’, ‘FR’, ‘SA’, ‘SU’ 형식으로 요일을 보여주는 함수 getWeekDay(date)를 만들어보세요.
+                예시)
+                    let date = new Date(2012, 0, 3);
+                    alert( getWeekDay(date) ); // TU
+            */
+
+            let date01 = new Date(2022, 10, 15);
+            function getWeekDay(date){
+                let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+                return days[date.getDay()];
+            }
+            alert(getWeekDay(date01));
+
+
+            /*
+                === 유럽 기준 달력 ===
+                유럽국가의 달력은 월요일부터 시작합니다(월요일-1, 화요일-2, … 일요일-7)
+                ‘유럽’ 기준 숫자를 반환해주는 함수 getLocalDay(date)를 만들어보세요.
+                예시)
+                    let date = new Date(2022, 11, 15);  // 2022년 11월 15일
+                    alert( getLocalDay(date) );       // 화요일이므로, 2가 출력되어야 함
+            */
+           
+            /*
+                기존 : 일월화수목금토 = 0123456
+                유럽 : 일월화수목금토 = 7123456
+            */
+            let date02 = new Date(2022, 10, 15);
+            function getLocalDay(date) {
+                if(date.getDay() == 1, 2, 3, 4, 5, 6){
+                    return date.getDay();
+                }else{
+                    return date.getDay() + 7;
+                }
+            }
+            alert( getLocalDay() );
+
+            // 단축한 코드
+            let date03 = new Date(2022, 10, 15);
+            function getLocalDay00(date) {
+                if(date.getDay() == 0){
+                    return date.getDay() + 7;
+                }
+                return date.getDay();
+            }
+            alert( getLocalDay00(date03) );
+
+
+        });
+       
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
