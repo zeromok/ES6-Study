@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // new Date() : 현재 날짜 및 시간이 저장된 Date 객체가 반환됨
+            let date00 = new Date();
+            document.querySelector("#time00").innerText = date00;
+
+            // new Date(millseconds) : UTC 기준(UTC+0) 1970년 1월 1일 0시 0분 0초에서 milliseconds 밀리초(1/1000 초) 후의 시점이 저장된 Date 객체가 반환됩니다.
+            let date01 = new Date(0);
+            document.querySelector("#time01").innerText = date01;
+
+            // new Date(datestring) : 인수가 하나인데, 문자열이라면 해당 문자열은 자동으로 구문 분석(parsed)됩니다.
+            /*
+                == 구문분석에 적용되는 알고리즘 ==
+                인수로 시간은 지정하지 않았기 때문에 GMT 자정이라고 가정하고
+                코드가 실행되는 시간대에 따라 출력 문자열이 바뀐다.
+            */
+            let date02 = new Date("2022-11-15");
+            document.querySelector("#time02").innerText = date02;
+
+        });
+        
+    </script>
+</head>
+<body>
+    <div>1. 현재 시간 : new Date() <p id="time00"></p></div> <!-- Tue Nov 15 2022 09:17:05 GMT+0900 (한국 표준시) -->
+    <div>2. new Date(milliseconds) <p id="time01"></p></div> <!-- Thu Jan 01 1970 09:00:00 GMT+0900 (한국 표준시) -->
+    <div>3. new Date(datestring) <p id="time02"></p></div> <!-- Tue Nov 15 2022 09:00:00 GMT+0900 (한국 표준시) -->
+</body>
+</html>
