@@ -7,6 +7,7 @@
     <title>Document</title>
     <script>
 
+
         document.addEventListener( "DOMContentLoaded", () => {
 
             /*
@@ -96,9 +97,45 @@
                 */
                 return dateCopy.getDate();
            }
-           alert( getDateAgo(date04, 1) );
-           alert( getDateAgo(date04, 2) );
-           alert( getDateAgo(date04, 365) );
+        //    alert( getDateAgo(date04, 1) );
+        //    alert( getDateAgo(date04, 2) );
+        //    alert( getDateAgo(date04, 365) );
+
+
+           /*
+                === 달의 마지막 일 ===
+                특정 달의 마지막 일을 반환하는 함수 getLastDayOfMonth(year, month)를 작성해보세요.
+                반환 값은 30이나 31, 29(2월), 28(2월)이 될 겁니다.
+                + 윤년인 2012년의 2월은 29가 반환되어야 합니다. getLastDayOfMonth(2012, 1) = 29
+           */
+          let date05 = new Date();
+          let year = date05.getFullYear();
+          let month = date05.getMonth();
+          function getLastDayOfMonth(year, month) {
+            
+                /*
+                    나의 답
+                
+                    if(year == 2012 && month == 1){
+                        return 29;
+                    }
+                    let addDate = new Date(year, month + 1);
+                    // 매개변수로 들어온 달의 다음 달 2022-12-00/00:00
+
+                    addDate.setDate(addDate.getDate() - 1);
+                    return addDate.toLocaleDateString();
+                */
+
+                /*
+                    new Date() 의 3번째 매개변수의 기본값은 1 이다.
+                    0을 넘기면 기본값 의 -1 즉, 1일 전을 의미 = 이전달의 마지막 일
+                */
+                    let date = new Date(year, month + 1, 0);
+                    
+                    return date.getDate();
+
+          }
+          alert(getLastDayOfMonth(year, month));
 
 
         });
