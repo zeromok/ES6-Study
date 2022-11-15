@@ -131,11 +131,38 @@
                     0을 넘기면 기본값 의 -1 즉, 1일 전을 의미 = 이전달의 마지막 일
                 */
                     let date = new Date(year, month + 1, 0);
-                    
+
                     return date.getDate();
 
           }
-          alert(getLastDayOfMonth(year, month));
+        //   alert(getLastDayOfMonth(year, month));
+
+
+          /*
+            === 몇 초나 지났을까요? ===
+            오늘 하루가 시작된 이후 몇 초나 지났는지 반환하는 함수 getSecondsToday()를 만들어보세요.
+            현재 시각이 10:00 am이고, 서머타임이 적용되지 않은 경우라면 아래와 같은 결과가 나와야 합니다.
+            예시)
+                getSecondsToday() == 36000 // (3600 * 10)
+          */
+
+          function getSecondsToday() {
+            let now = new Date();
+            // 방법 1.
+            // 오늘 00시 00분 00초를 나타내는 today객체를 만들고 '지금'을 나타내는 now 에서 빼는 방법
+        
+            let today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // 현재 일자 까지만 초기화
+
+            let diff = now - today; // 차이
+            return Math.round(diff / 1000);
+
+            // 방법 2.
+            // 오늘 경과시간을 변환하는 방법
+
+            // return ( now.getHours() * 3600 ) + ( now.getMinutes() * 60 ) + now.getSeconds();
+
+          }
+          alert( getSecondsToday() );
 
 
         });
