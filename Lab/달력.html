@@ -104,6 +104,9 @@
     .sec_cal #cal_wrap .day.disable {
         color: #ddd;
     }
+    .day{
+        text-decoration-line: none;
+    }
 </style>
 
 <script>
@@ -163,17 +166,17 @@
 
             // 지난달
             for (let i = prevDate - prevDay; i <= prevDate; i++) {
-                calendar.innerHTML += '<div class="day prev disable">' + i + '</div>';
+                calendar.innerHTML += `<a href="#" class="day prev disable" id = "${i}">` + i + '</a>';
             }
 
             // 이번달
             for (let i = 1; i <= nextDate; i++) {
-                calendar.innerHTML += '<div class="day current">' + i + '</div>';
+                calendar.innerHTML += `<a href="#" class="day current" id = "${i}">` + i + '</a>';
             }
 
             // 다음달
             for (let i = 1; i <= (6 - nextDay == 6 ? 0 : 6 - nextDay); i++) {
-                calendar.innerHTML += '<div class="day next disable">' + i + '</div>';
+                calendar.innerHTML += `<a href="#" class="day next disable" id = "${i}">` + i + '</a>';
             }
 
             // 오늘 날짜 표기
