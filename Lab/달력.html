@@ -120,6 +120,9 @@
         */
         let date = new Date();  // 한국표준시
         /* 
+            ====================================================
+            세계 어디서는 한국 기준으로 나오게끔 만들어주는 코드
+            ====================================================
             getTime() : 1970년을 기준으로 현재까지의 시간을 'ms' 단위로 리턴
             getTimezoneOffset() : UTC 와 시스템이 속해 있는 지역의 시간차를 '분' 단위로 리턴
         */
@@ -129,7 +132,6 @@
 
 
         // 달력에서 표기하는 날짜 객체 = 한국기준 현재 일자
-        
         let thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
         let currentY = thisMonth.getFullYear(); // 달력에서 표기하는 연
@@ -167,17 +169,17 @@
 
             // 지난달
             for (let i = prevDate - prevDay; i <= prevDate; i++) {
-                calendar.innerHTML += `<a href="#" class="day prev disable" id = "${i}">` + i + '</a>';
+                calendar.innerHTML += '<a href="#" class="day prev disable">' + i + '</a>';
             }
 
             // 이번달
             for (let i = 1; i <= nextDate; i++) {
-                calendar.innerHTML += `<a href="#" class="day current" id = "${i}">` + i + '</a>';
+                calendar.innerHTML += '<a href="#" class="day current">' + i + '</a>';
             }
 
             // 다음달
             for (let i = 1; i <= (6 - nextDay == 6 ? 0 : 6 - nextDay); i++) {
-                calendar.innerHTML += `<a href="#" class="day next disable" id = "${i}">` + i + '</a>';
+                calendar.innerHTML += '<a href="#" class="day next disable">' + i + '</a>';
             }
 
             // 오늘 날짜 표기
