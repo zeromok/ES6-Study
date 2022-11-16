@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>달력</title>
+</head>
+
+<style>
+    .sec_cal {
+    width: 360px;
+    margin: 0 auto;
+    font-family: "NotoSansR";
+    }
+    .sec_cal .cal_nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 78px;
+    }
+    .sec_cal .cal_nav #year-month {
+        width: 300px;
+        text-align: center;
+        line-height: 1;
+    }
+    .sec_cal .cal_nav .nav {
+        display: flex;
+        border: 1px solid #333333;
+        border-radius: 5px;
+    }
+    .sec_cal .cal_nav #go-prev,
+    .sec_cal .cal_nav #go-next {
+        display: block;
+        width: 50px;
+        height: 78px;
+        font-size: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .sec_cal .cal_nav #go-prev::before,
+    .sec_cal .cal_nav #go-next::before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #000;
+        border-width: 3px 3px 0 0;
+        transition: border 0.1s;
+    }
+    .sec_cal .cal_nav #go-prev:hover::before,
+    .sec_cal .cal_nav #go-next:hover::before {
+        border-color: #ed2a61;
+    }
+    .sec_cal .cal_nav #go-prev::before {
+        transform: rotate(-135deg);
+    }
+    .sec_cal .cal_nav #go-next::before {
+        transform: rotate(45deg);
+    }
+    .sec_cal .cal_wrap {
+        padding-top: 40px;
+        position: relative;
+        margin: 0 auto;
+    }
+    .sec_cal .cal_wrap .days {
+        display: flex;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .sec_cal .cal_wrap::after {
+        top: 368px;
+    }
+    .sec_cal .cal_wrap .day {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% / 7);
+        text-align: left;
+        color: #999;
+        font-size: 12px;
+        text-align: center;
+        border-radius:5px
+    }
+    .current.today {
+        background: rgb(242 242 242);
+    }
+    .sec_cal .cal_wrap #dates {
+        display: flex;
+        flex-flow: wrap;
+        height: 290px;
+    }
+    .sec_cal .cal_wrap .day:nth-child(7n) {
+        color: #3c6ffa;
+    }
+    .sec_cal .cal_wrap .day:nth-child(7n-6) {
+        color: #ed2a61;
+    }
+    .sec_cal .cal_wrap .day.disable {
+        color: #ddd;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () =>{
+
+        /*
+            ==============
+            달력 기능 구현
+            ==============
+            
+        */
+        let date = new Date();  // 한국표준시
+        /* 
+            getTime() : 1970년을 기준으로 현재까지의 시간을 'ms' 단위로 리턴
+            getTimexoneOffset() : UTC 와 시스템이 속해 있는 지역의 시간차를 '분' 단위로 리턴
+        */
+        let utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
+        let kstGap = 9 * 6 * 60 * 1000; // 한국 기준시
+        let today = new Date(utc + kstGap); // 한국 기준으로 date()객체 만들기
+
+
+        // 달력에서 표기하는 날짜 객체 = 한국기준 현재 일자
+        let thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        let currentY = thisMonth.getFullYear(); // 달력에서 표기하는 연
+        let currentM = thisMonth.getMonth(); // 달력에서 표기하는 월 - 1
+        let currentD = thisMonth.getDate(); // 달력에서 표기하는 일
+
+        function renderCalender(thisMonth) {
+
+            currentY = thisMonth.getFullYear(); // 달력에서 표기하는 연
+            currentM = thisMonth.getMonth(); // 달력에서 표기하는 월 - 1
+            currentD = thisMonth.getDate(); // 달력에서 표기하는 일
+
+            // 이전 달의 마지막 날 날짜와 요일 구하기
+            let startDay = new Date(currentY, currentM, 0); // 이전 달 마지막 일자로 set
+            let prevDate = startDay.getDate(); // 일자 반환 (ex 10월이면 31)
+            let prevDay = startDay.getDay(); // 몇요일 인지 반환 0~6(일~월) (ex 10월이면 1(월))
+
+            // 이번 달의 마지막 날 날짜와 요일 구하기
+            let endDay = new Date(currentY, currentM + 1, 0);
+            let nextDate = endDay.getDate(); // 일자 반환 (ex 11월이면 30)
+            let nextDay = endDay.getDay(); // 몇요일 인지 반환 0~6(일~월) (ex 11월이면 3(목))
+
+            // 이번 달 표기
+            document.getElementById('year-month').innerText = currentY + '.' + (currentM + 1);
+            
+            calendar = document.getElementById('dates');
+
+            // 렌더링 HTML 요소 생성
+            calendar = document.getElementById('dates');
+            calendar.innerHTML = '';
+
+            // 지난달
+            for (let i = prevDate - prevDay; i <= prevDate; i++) {
+                calendar.innerHTML += '<div class="day prev disable">' + i + '</div>';
+            }
+
+            // 이번달
+            for (let i = 1; i <= nextDate; i++) {
+                calendar.innerHTML += '<div class="day current">' + i + '</div>';
+            }
+
+            // 다음달
+            for (let i = 1; i <= (6 - nextDay == 6 ? 0 : 6 - nextDay); i++) {
+                calendar.innerHTML += '<div class="day next disable">' + i + '</div>';
+            }
+
+            // 오늘 날짜 표기
+            if(today.getMonth() == currentM) {
+                todayDate = today.getDate();
+                let currentMonthDate = document.querySelectorAll('#dates .current');
+                /*
+                    classList() : DOMTokenList 객체로 element의 class 속성(값)을 보여줍니다.
+                                  classList가 읽기전용이어도 다양한 메소드를 통해 class 목록을 조작할 수 있습니다.
+                */
+                currentMonthDate[todayDate - 1].classList.add('today');
+            }
+
+        }// renderCalender()
+
+        // 이전 달 로 이동
+        document.getElementById('go-prev').addEventListener('click', () => {
+            prevM = new Date(currentY, currentM - 1, 1);
+            renderCalender(prevM);
+        });
+
+        // 다음 달 로 이동
+        document.getElementById('go-next').addEventListener('click', () => {
+            nextM = new Date(currentY, currentM + 1, 1);
+            renderCalender(nextM);
+        });
+
+        renderCalender(thisMonth);
+
+
+    });
+</script>
+
+<body>
+    <div class="sec_cal">
+        <div class="cal_nav">
+          <a href="javascript:;" id="go-prev">prev</a>
+          <div id="year-month"></div>
+          <a href="javascript:;" id="go-next">next</a>
+        </div>
+        <div class="cal_wrap">
+          <div class="days">
+            <div class="day">SUN</div>
+            <div class="day">MON</div>
+            <div class="day">TUE</div>
+            <div class="day">WED</div>
+            <div class="day">THU</div>
+            <div class="day">FRI</div>
+            <div class="day">SAT</div>
+          </div>
+          <div id="dates"></div>
+        </div>
+      </div>
+</body>
+</html>
