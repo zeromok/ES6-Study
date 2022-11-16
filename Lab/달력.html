@@ -62,21 +62,21 @@
     .sec_cal .cal_nav #go-next::before {
         transform: rotate(45deg);
     }
-    .sec_cal .cal_wrap {
+    .sec_cal #cal_wrap {
         padding-top: 40px;
         position: relative;
         margin: 0 auto;
     }
-    .sec_cal .cal_wrap .days {
+    .sec_cal #cal_wrap #days {
         display: flex;
         margin-bottom: 20px;
         padding-bottom: 20px;
         border-bottom: 1px solid #ddd;
     }
-    .sec_cal .cal_wrap::after {
+    .sec_cal #cal_wrap::after {
         top: 368px;
     }
-    .sec_cal .cal_wrap .day {
+    .sec_cal #cal_wrap .day {
         display:flex;
         align-items: center;
         justify-content: center;
@@ -90,18 +90,18 @@
     .current.today {
         background: rgb(242 242 242);
     }
-    .sec_cal .cal_wrap #dates {
+    .sec_cal #cal_wrap #dates {
         display: flex;
         flex-flow: wrap;
         height: 290px;
     }
-    .sec_cal .cal_wrap .day:nth-child(7n) {
+    .sec_cal #cal_wrap .day:nth-child(7n) {
         color: #3c6ffa;
     }
-    .sec_cal .cal_wrap .day:nth-child(7n-6) {
+    .sec_cal #cal_wrap .day:nth-child(7n-6) {
         color: #ed2a61;
     }
-    .sec_cal .cal_wrap .day.disable {
+    .sec_cal #cal_wrap .day.disable {
         color: #ddd;
     }
 </style>
@@ -134,6 +134,10 @@
 
         function renderCalender(thisMonth) {
 
+            /* 
+                렌더링을 위해 함수에 넣어준다.
+                매개변수로 이전달, 다음달 이 들어오면 초기화
+            */
             currentY = thisMonth.getFullYear(); // 달력에서 표기하는 연
             currentM = thisMonth.getMonth(); // 달력에서 표기하는 월 - 1
             currentD = thisMonth.getDate(); // 달력에서 표기하는 일
@@ -187,14 +191,14 @@
 
         // 이전 달 로 이동
         document.getElementById('go-prev').addEventListener('click', () => {
-            prevM = new Date(currentY, currentM - 1, 1);
-            renderCalender(prevM);
+            thisMonth = new Date(currentY, currentM - 1, 1);
+            renderCalender(thisMonth);
         });
 
         // 다음 달 로 이동
         document.getElementById('go-next').addEventListener('click', () => {
-            nextM = new Date(currentY, currentM + 1, 1);
-            renderCalender(nextM);
+            thisMonth = new Date(currentY, currentM + 1, 1);
+            renderCalender(thisMonth);
         });
 
         renderCalender(thisMonth);
@@ -210,8 +214,8 @@
           <div id="year-month"></div>
           <a href="javascript:;" id="go-next">next</a>
         </div>
-        <div class="cal_wrap">
-          <div class="days">
+        <div id="cal_wrap">
+          <div id="days">
             <div class="day">SUN</div>
             <div class="day">MON</div>
             <div class="day">TUE</div>
