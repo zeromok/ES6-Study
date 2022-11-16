@@ -121,7 +121,7 @@
         let date = new Date();  // 한국표준시
         /* 
             getTime() : 1970년을 기준으로 현재까지의 시간을 'ms' 단위로 리턴
-            getTimexoneOffset() : UTC 와 시스템이 속해 있는 지역의 시간차를 '분' 단위로 리턴
+            getTimezoneOffset() : UTC 와 시스템이 속해 있는 지역의 시간차를 '분' 단위로 리턴
         */
         let utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000);
         let kstGap = 9 * 6 * 60 * 1000; // 한국 기준시
