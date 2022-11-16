@@ -5,18 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body{
-            margin: auto;
-        }
-        #wrap{
-            position: relative;
-        }
-        #text{
-            position: absolute;
-            top: 25%;
-        }
-    </style>
     <script>
 
 
@@ -175,38 +163,6 @@
 
           }
         //   alert( getSecondsToday() );
-
-
-        // ======================
-        // 퇴근시간 타이머
-        // ======================
-
-        function time() {
-        // 퇴근시간을 '초' 단위로 바꾸기
-        let goHome = new Date(2022, 10, 16, 08, 56);
-        let goHomeSec = ( goHome.getHours() * 3600 ) + ( goHome.getMinutes() * 60 ) + goHome.getSeconds();
-
-        // 현재 시간을 '초' 단위로 바꾸기
-        let now = new Date();
-        let nowSec = ( now.getHours() * 3600 ) + ( now.getMinutes() * 60 ) + now.getSeconds();
-
-        if(goHomeSec - nowSec <= 0){
-
-            document.getElementById("none").style.display = 'none';
-            let tag = document.createElement('h2');
-            tag.innerText = '퇴근이다!';
-            document.getElementById("text").appendChild(tag);
-
-            return clearInterval(timer); // 타이머 중지
-
-        }
-
-        // (퇴근시간 - 오늘 경과 시간) = 남은시간을 화면에 출력
-        return document.querySelector("#time").innerText = goHomeSec - nowSec;
-
-        };
-        let timer = setInterval(time, 1000);
-        
         
 
           /*
@@ -256,14 +212,6 @@
     </script>
 </head>
 <body>
-    <div id="wrap">
-        <img  id="bono" src="/연습문제/bono.jpg" width="400px">
-        <div id="text">
-            <div id = "none">
-                <p>&nbsp;퇴근까지</p>
-                &nbsp;<label id="time"></label> 초 남았습니다.
-            </div>
-        </div>
-    </div>
+
 </body>
 </html>
