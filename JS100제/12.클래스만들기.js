@@ -28,6 +28,7 @@ class Wizard {
     attack() {
         console.log('파이어볼');
     }
+    
 }
 
 // 입력
