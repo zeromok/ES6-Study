@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+ 
+    /*
+    Js 의 This는 Java와 좀 다르다.
+
+    Java : 인스턴스 자신을 가리키는 참조변수
+    JS   : this 에 바인딩되는 객체가 한가지가 아니라 해당 함수 호출 방식에 따라 this에 바인딩되는 객체가 달라진다.
+           즉, 함수를 호출할 때 어떻게 호출되었는지에 따라 this에 바인딩될 객체가 동적으로 결정
+    */
+
+    // ===============
+    // 함수의 호출방식
+    /*
+        1. 함수호출 
+        2. 메소드 호출
+        3. 생성자 함수 호출
+        4. apply / call / bind 호출
+    */
+    // ===============
+    let fun1 = function() {
+        // dir : 요소를 JSON과 같은 트리구조로 출력하고, DOM JS객체의 전체표현을 보려할 때 사용 -> 주로 객체에 사용
+        console.dir(this);
+    };
+    // 1. 함수호출
+    fun1(); // Window
+    // window.foo();
+
+    // 2. 메소드 호출
+    let obj1 = {foo: fun1};
+    obj1.foo(); // Object
+
+    // 3. 생성자 함수 호출
+    let instance = new fun1(); // instance(fun1)
+
+    // 4. apply / call / bind 호출 = this 를 Window가 아닌 다른객체로 바인딩해주는 함수들
+    let bar = { name: 'bar' };
+
+    fun1.call(bar);              // .call() : 함수를 호출하는 함수, this를 첫번째 인자로 바인딩
+    fun1.apply(bar);             // .apply() : 함수를 호출하는 함수, this를 첫번째 인자로 바인딩 
+    console.log(fun1.bind(bar)); // .bind() : 들어온 함수를 리턴해주는 함수
+
+
+});// end
+
+
+</script>
+<body>
+    
+</body>
+</html>
+
+
+
+
