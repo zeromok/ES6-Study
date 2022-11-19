@@ -50,6 +50,57 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(fun1.bind(bar)); // .bind() : 들어온 함수를 리턴해주는 함수
 
 
+    // =======================================
+    // 일반함수 This **VS** 화살표함수 This
+    // =======================================
+
+    // 일반함수
+    /*
+        1. 함수 실행시에는 Window(전역) 객체를 가르킨다.
+        2. 메소드 실행시에는 메소드를 소유하고 있는 객체를 가리킨다.
+        3. 생성자 실행시에는 새롭게 만들어진 객체를 가리킨다.
+    */
+
+    // 화살표함수
+    /*
+        1. 함수를 선언할 때 this를 바인딩할 객체가 정적으로 결정
+        2. 화살표함수의 this는 언제나 상위 스코프의 this를 가리킨다.
+        3. call / apply / bind 를 사용해 this를 변경할 수 없다.
+    */
+
+    // 일반 함수
+    // 해당객체를 바인딩 하여 this 값을 동적으로 변경
+    function fun() {
+        this.name = "하이";
+        return {
+            name: "바이",
+            speak: function() {
+                console.log(this.name);
+                // 자신이 종속된 객체( return() ) = this
+            }
+        };
+    }// fun()
+
+    // 화살표 함수
+    // 상위객체의 this를 그대로 이어받아 사용
+    function arrFun() {
+        this.name = "하이";
+        return {
+            name: "바이",
+            speak: () => {
+                console.log(this.name);
+                // 자신이 종속된 인스턴스( arrFun() ) = this
+            }
+        };
+    }// arrFun()
+
+    let fu1 = new fun();
+    fu1.speak(); // 바이
+
+    let fu2 = new arrFun();
+    fu2.speak(); // 하이
+
+
 });// end
 
 
