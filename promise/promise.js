@@ -3,7 +3,7 @@
 //Promise : Object for Asynchronous Operation
 
 
-// stste : 상태, 기능이 수행중인지, 기능수행이 완료되어 성공인지 실패인지
+// state : 상태, 기능이 수행중인지, 기능수행이 완료되어 성공인지 실패인지
 // 
 
 // Producer vs Consumer
