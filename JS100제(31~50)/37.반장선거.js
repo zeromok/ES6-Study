@@ -12,19 +12,21 @@
 */
 let str = "원범 원범 혜원 혜원 혜원 혜원 유진 유진";
 let strArr = str.split(' ');
+console.log("strArr : ", strArr);
 let result = {};
 for(let index in strArr) {
     let val = strArr[index];
     result[val] = result[val] === undefined ? 1 : result[val] + 1;
 }
+console.log("result : ", result);
 let winner = Object.keys(result).reduce( (a, b) => { 
     return result[a] > result[b] ? a : b
 });
-console.log(winner);
-console.log(result[winner]);
+console.log(`${winner}(이)가 총 ${result[winner]}표로 반장이 되었습니다.`);
 /*
     접근방법 :
-    1. 입력값들을 배열에 집어넣기
-    2. 배열을 순회하며 중복값 체크? -> 이 문제와는 다른 접근 방식
-    2. 
+    1. 입력값들을 배열에 집어넣기 -> strArr
+    X. 배열을 순회하며 중복값 체크? -> 이 문제와는 다른 접근 방식
+    2. 배열을 순회하며 객체로 만들기 -> result
+    3. 객체의 키값들을 뽑아내( Object.keys() ) 그, 배열을 순회( reduce() )하며 실행값 반환
 */
