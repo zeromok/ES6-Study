@@ -185,7 +185,7 @@ class Person{
 const me1 = new Person('Lee');
 
 // 프로퍼티 참조
-console.log(me.name);   // Lee
+console.log(me1.name);   // Lee
 
 // 메소드 호출
 me1.sayHi();        // My name is Lee
