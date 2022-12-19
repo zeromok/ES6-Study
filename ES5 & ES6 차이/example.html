@@ -9,24 +9,19 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        function getData() {
-            fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
-                .then( (data) => {
-                    console.log(data.json());
-                    return data.json();
-                })
-                .catch( (error) => {
-                    console.log(error);
-                })
-        }
-        getData();
-
-        function getData() {
-            fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
-            .then(response => response.json())
-            .then(commits => console.log(commits));
-        }
-        getData();
+            function getData() {
+                fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+                    .then( (data) => {
+                        return data.json();
+                    })
+                    .then( (data) => {
+                        console.log(data);
+                    })
+                    .catch( (error) => {
+                        console.log(error);
+                    });
+            }
+           getData();
 
     });
 </script>
