@@ -226,25 +226,36 @@ let [one1, , three1] = arr;
     비동기처리에 사용되는 객체
 */
 
+// function getData() {
+//     return new Promise(function(resolve, reject) {
+//         $.get('url 주소/products/1', function(response) {
+//             if(response) {
+//                 resolve(response);
+//             }
+//             reject(new Error('not found'))
+//         })
+//     })
+// }
+
 function getData() {
-    return new Promise(function(resolve, reject) {
-        $.get('url 주소/products/1', function(response) {
-            if(response) {
-                resolve(response);
-            }
-            reject(new Error('not found'))
+    fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+        .then( (data) => {
+            console.log(data);
         })
-    })
+        .catch( (error) => {
+            console.log(error);
+        })
 }
+console.log(getData());
 
 
-getData()
-    .then(function(data) {
-        console.log(data);
-    })
-    .catch(function(error) {
-        console.log(error);
-    })
+// getData()
+//     .then(function(data) {
+//         console.log(data);
+//     })
+//     .catch(function(error) {
+//         console.log(error);
+//     })
 
 
 // ==========================
