@@ -29,6 +29,16 @@
             .then( (data) => {
                 console.log(data);
             });
+        
+        // 2-1 GET
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then( (data) => {
+                return data.json();
+            })
+            .then( (data) => {
+                console.log(data);
+            });
+        
 
     });
 </script>
