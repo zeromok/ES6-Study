@@ -1,0 +1,9 @@
+{
+  "name": "ES6_Study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/zeromok/ES6_Study.git",
+  "author": "Daniel <byoung.mokk@gmail.com>",
+  "license": "MIT",
+  "type": "module"
+}
