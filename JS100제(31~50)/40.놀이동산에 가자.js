@@ -22,9 +22,13 @@
     2
 */
 function limit(weight) {
-    let arr = [];
-    arr.push(weight);
-
+    let result = 0;
+    let limit = weight[0];
+    let user = weight.slice(1);
+    for (let i = 0; i < user.length;i++) {
+        result += user[i];
+        if(result > limit) return i - 1;
+    }
 }
 
-limit(10);
+console.log(limit([50, 5, 20, 20, 20, 20, 20]));
