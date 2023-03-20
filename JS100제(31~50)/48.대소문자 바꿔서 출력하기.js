@@ -14,5 +14,5 @@
     for (let i = 0; i < str.length; i++) {
         if (low[i] === strArr[i]) low[i] = low[i].toUpperCase();
     }
-    console.log(low.join(""));)
+    console.log(low.join(""));
 })("AAABBBcccddd");
