@@ -7,7 +7,7 @@
     입력 : AAABBBcccddd
     출력 : aaabbbCCCDDD
 */
-
+// 1.
 (function (str) {
     let low = [...str.toLowerCase()];
     let strArr = str.split("");
@@ -15,4 +15,17 @@
         if (low[i] === strArr[i]) low[i] = low[i].toUpperCase();
     }
     console.log(low.join(""));
+})("AAABBBcccddd");
+
+// 2.
+(function (str) {
+    let strArr = str.split("");
+    console.log(
+        strArr.map((item) => {
+               if (item === item.toUpperCase()) item.toLowerCase();
+               else item.toUpperCase();
+               }
+           )
+           .join("")
+    );
 })("AAABBBcccddd");
