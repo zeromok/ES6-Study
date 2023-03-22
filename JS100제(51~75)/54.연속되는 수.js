@@ -15,7 +15,6 @@
 */
 // 1.
 (function (stamp) {
-    debugger;
     let count = 0;
     for (let i = 0; i < stamp.length; i++) {
         if (stamp[i] + 1 === stamp[i + 1]) {
