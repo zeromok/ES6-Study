@@ -27,7 +27,7 @@
         }
     }
     arr.push(String(count - 1));
-    console.log(arr.join(""));
+    console.log(`1. ${arr.join("")}`);
 })();
 
 // 2.
@@ -39,9 +39,29 @@
     for (let item of duplication) {
         let regex = new RegExp(`${item}`, 'g');
 
+        // 2-1. : concat() 사용
         result = result.concat(String(str.match(regex).length - 1));
+        // 2-2. : Array 사용
         resultArr.push(str.match(regex).length - 1);
     }
-    console.log(`1. ${result}\n2. ${resultArr.join("")}`);
+    console.log(`2-1.String : ${result}\n2-2.Array : ${resultArr.join("")}`);
 })();
 
+
+// 3.
+(function () {
+    let str = 'aaabccddddddddddeffffffffffggghhhh';
+    let result = [];
+    let count = 0;
+    let strArr = str.split("")
+        .reduce((acc, curr, idx, arr) => {
+            if (idx === (arr.length - 1)) result.push(String(count + 1));
+            if (acc === curr) count++;
+            else {
+                result.push(String(count));
+                count = 0;
+            }
+            return curr;
+        });
+    console.log(`3.reduce() : ${result.join("")}`);
+})();
