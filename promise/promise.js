@@ -110,3 +110,37 @@ let b = () => (
 console.log(b());
 // () 자체가 리턴
 
+
+// =========================
+// async & await
+// async : function 앞에 위치하며 async 가 붙은 함수는 프라미스를 반환한다.
+//         프라미스(resolved promise)가 아닌 값을 반환하더라도 이행 상태의 프라미스로 값을 감싸 이행된 프라미스가 반환되도록 한다.
+
+// await : async 함수 안에서만 동작하며, 해당 키워드를 만나면 프라미스가 처리 될 때까지 기다린 후 반환된다.
+//         Ex) let value = await promise;
+// =========================
+
+// function loadJson(url) {
+//     return fetch(url)
+//         .then(response => {
+//             if (response.status == 200) {
+//                 return response.json();
+//             } else {
+//                 throw new Error(response.status);
+//             }
+//         })
+// }
+//
+// loadJson('no-such-user.json')
+//     .catch(alert); // Error: 404
+
+async function loadJson(url) {
+    let response = await fetch(url);
+    if (response.status === 200) {
+        // let json = await response.json();
+        // return json
+        return response.json();
+    } else {
+        throw new Error(response.status);
+    }
+}
